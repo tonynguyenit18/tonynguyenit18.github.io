@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import logo from './images/logo.png';
 import hero from './images/hero.png';
 import happyFace from './images/happy-face.png';
+import smile from './images/smile.png';
 import './App.css';
 
 const App = () => {
-  const [words, setWords] = useState(["React", "React Native"]);
+  const [words] = useState(["React", "React Native"]);
   const [fancyText, setFancyText] = useState("");
   const [textIndex, setTexIndex] = useState(0);
   const [action, setAction] = useState("write")
@@ -59,7 +60,7 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header d-flex flex-row" >
-        <a href="/" className="d-flex justify-content-center align-items-center" style={{ width: "80px", height: "80px", cursor: "pointer" }}>
+        <a href="/me" className="d-flex justify-content-center align-items-center logo" style={{ width: "80px", height: "80px", cursor: "pointer" }}>
           <img src={logo} style={{ width: "70%", height: "70%" }}></img>
         </a>
         <nav className="navbar navbar-expand-md navbar-light d-flex justify-content-end align-items-center" style={{ width: "90%", position: "relative" }}>
@@ -92,19 +93,26 @@ const App = () => {
         </nav>
       </header>
       <section className={`greet d-flex flex-row justify-content-center ${navClassName == "collapsed-navbar" ? "moved-down" : ""}`}>
-        <div className="ml-4 d-flex justify-content-end face-wrap" >
-          <img className="happy-face" src={happyFace} />
+        <div className="d-flex justify-content-end face-wrap" >
+          <div className="happy-face-slide-animate">
+            <div className="happy-face-rotate-animate">
+              <div className="happy-face">
+                <img src={happyFace} style={{ width: "100%", height: "100" }} />
+                <img className="smile" src={smile} />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="quote-wrap d-flex justify-content-start" >
+        <div className="quote d-flex justify-content-start" >
           <div className="d-flex flex-column align-items-start quote-wrap">
             <p className="greet-quote">Hi, I am Tony</p>
             <p className="tech-quote">I am a developer using <strong style={{ color: "#F8333C" }}>{fancyText}</strong><span className="cs-clink">|</span></p>
           </div>
         </div>
       </section>
-      <section className="hero d-flex justify-content-center mt-5">
-        <div style={{ width: "60%" }}>
-          <img src={hero} style={{ width: "100%", height: "100%", minWidth: "150px" }} />
+      <section className="d-flex justify-content-center mt-5">
+        <div className="hero">
+          <img src={hero} style={{ width: "100%", height: "100%" }} />
         </div>
       </section>
     </div>

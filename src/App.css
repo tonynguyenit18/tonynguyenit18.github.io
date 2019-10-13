@@ -3,6 +3,10 @@
   padding: 20px 15%;
 }
 
+.logo:hover{
+  animation: logo-rotate 1000ms forwards ease-in-out;
+}
+
 .humburger{
   display: none;
   cursor: pointer;
@@ -35,21 +39,52 @@
 
 .face-wrap{
   width: 35%;
-  animation: slide-right 1000ms forwards ease-in-out;
 }
-.quote-wrap{
+.quote{
   width: 65%;
+}
+
+.quote-wrap{
+  width: 100%;
   animation: slide-left 1200ms forwards ease-in-out;
 }
 
 .greet{
   height: 150px;
 }
-
-.happy-face{
+.happy-face-slide-animate{
   width: 120px;
   height: 120px;
-  margin-right: 30px
+  animation: slide-right 800ms forwards ease-in-out;
+}
+
+.happy-face-rotate-animate{
+  width: 100%;
+  height: 100%;
+}
+
+.happy-face-rotate-animate:hover{
+  animation: logo-rotate 1000ms forwards ease-in-out;
+}
+
+.happy-face{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: logo-rotate 1000ms 1200ms forwards ease-in-out;
+}
+
+.happy-face-animate:hover{
+  animation: logo-rotate 1000ms forwards ease-in-out;
+}
+
+.smile{
+  position: absolute;
+  top:65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  animation: smile 1000ms 2500ms forwards ease-in;
 }
 
 .greet-quote{
@@ -66,15 +101,31 @@
   animation: move-down 700ms forwards ease-out;
 }
 
+.hero{
+  width: 60%;
+}
 
 @media screen and (max-width:767px){
+  .logo img{
+    height: 50% !important;
+  }
   .greet{
     height: 100px;
+    line-height: 1;
   }
-  .happy-face{
+  .face-wrap{
+    width: 25%;
+  }
+  .quote{
+    width: 75%;
+  }
+  .happy-face-slide-animate{
     width: 80px;
-   height: 80px;
-   margin-right: 30px
+    height: 80px;
+  }
+
+  .happy-face{
+   margin-right: 20px
   }
 
    .greet-quote{
@@ -93,7 +144,7 @@
     position: absolute;
     top: 0px;
     left:50%;
-    transform: translateX(-50%);
+    transform: translateX(-70%);
     animation: drop-down 600ms forwards ease-in;
   }
   
@@ -102,12 +153,18 @@
     padding: 10px 15px;
   }
   
+  .hero{
+    width: 80%;
+  }
 }
 @media screen and (max-width:576px){
-  .happy-face{
+  .happy-face-slide-animate{
     width: 60px;
-   height: 60px;
-   margin-right: 20px}
+    height: 60px;
+  }
+  .happy-face{
+   margin-right: 15px
+  }
 
    .greet-quote{
      font-size: 20px;
@@ -158,10 +215,10 @@
 }
 @keyframes slide-right{
   0%{
-    margin-right: 100%;
+    margin-right: 1000px;
   }
   100%{
-    margin-right: 0%;
+    margin-right: 7%;
   }
 }
 @keyframes slide-left{
@@ -170,5 +227,28 @@
   }
   100%{
     margin-left: 0%;
+  }
+}
+
+@keyframes logo-rotate{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(-180deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes smile{
+  0%{
+    width: 0%;
+    top: 75%;
+  }
+  100%{
+    width: 65%;
+    top: 65%;
   }
 }
