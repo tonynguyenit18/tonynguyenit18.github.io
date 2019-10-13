@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/me/static/css/main.5089dc05.chunk.css",
+    "main.js": "/me/static/js/main.d6acc535.chunk.js",
+    "main.js.map": "/me/static/js/main.d6acc535.chunk.js.map",
+    "runtime-main.js": "/me/static/js/runtime-main.e284bfcc.js",
+    "runtime-main.js.map": "/me/static/js/runtime-main.e284bfcc.js.map",
+    "static/css/2.0624914a.chunk.css": "/me/static/css/2.0624914a.chunk.css",
+    "static/js/2.a5320fe2.chunk.js": "/me/static/js/2.a5320fe2.chunk.js",
+    "static/js/2.a5320fe2.chunk.js.map": "/me/static/js/2.a5320fe2.chunk.js.map",
+    "index.html": "/me/index.html",
+    "precache-manifest.41459b66a8fa9b3c2496002044798e22.js": "/me/precache-manifest.41459b66a8fa9b3c2496002044798e22.js",
+    "service-worker.js": "/me/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/me/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.5089dc05.chunk.css.map": "/me/static/css/main.5089dc05.chunk.css.map",
+    "static/media/happy-face.png": "/me/static/media/happy-face.13d2e698.png",
+    "static/media/hero.png": "/me/static/media/hero.ac2cf086.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e284bfcc.js",
+    "static/css/2.0624914a.chunk.css",
+    "static/js/2.a5320fe2.chunk.js",
+    "static/css/main.5089dc05.chunk.css",
+    "static/js/main.d6acc535.chunk.js"
+  ]
+}
