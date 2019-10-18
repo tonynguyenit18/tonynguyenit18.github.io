@@ -13,6 +13,7 @@
   width: 100%;
   background-color:#fff;
   z-index: 5;
+  animation: slide-down 800ms forwards ease-in-out;
 }
 
 .expand-down{
@@ -61,7 +62,7 @@
 
 .quote-wrap{
   width: 100%;
-  animation: slide-left 1200ms forwards ease-in-out;
+  animation: slide-left 800ms forwards ease-in-out;
 }
 
 .greet{
@@ -107,6 +108,7 @@
 
 .hero{
   width: 60%;
+  animation: slide-up 800ms forwards ease-in-out;
 }
 
 @media screen and (max-width:767px){
@@ -243,6 +245,23 @@
   }
   100%{
     margin-left: 0%;
+  }
+}
+
+@keyframes slide-up{
+  0%{
+    transform:translateY(1000px);
+  }
+  100%{
+    transform:translateY(0);
+  }
+}
+@keyframes slide-down{
+  0%{
+    transform:translateY(-1000px);
+  }
+  100%{
+    transform:translateY(0);
   }
 }
 
