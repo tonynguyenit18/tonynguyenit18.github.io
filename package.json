@@ -2,7 +2,7 @@
   "name": "myprofile",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://tonynguyenit.github.io/me",
+  "homepage": "http://tonynguyenit.github.io",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.5.0",
