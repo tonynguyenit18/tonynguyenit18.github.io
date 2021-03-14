@@ -3,6 +3,9 @@ import logo from '../images/logo.png';
 import hero from '../images/hero.png';
 import happyFace from '../images/happy-face.png';
 import smile from '../images/smile.png';
+import github from '../images/github-icon.png';
+import linkedin from '../images/linkedin-icon.png';
+import medium from '../images/medium-icon.png';
 import '../css/App.css';
 
 import Teaches from "./Teches";
@@ -111,6 +114,11 @@ const App = () => {
               </ul>
             </div>
           </nav>
+          <div style={{display: "flex", justifyContent: "flex-end", position: "fixed", top: 5, right: 20}}>
+            <a href="https://github.com/tonynguyenit18"><img src={github} style={{ height: 30, marginRight:10}} alt="github" title="Github"/></a>
+            <a href="https://www.linkedin.com/in/tony-nguyen-7912b8169"><img src={linkedin} style={{ height: 31, marginRight:10}} alt="linkedin" title="Linkedin"/></a>
+            <a href="https://medium.com/@tonynguyenit18"><img src={medium} style={{ height: 30}} alt="medium" title="Medium"/></a>
+          </div>
         </header>
         <section className={`greet d-flex flex-row justify-content-center ${navClassName == "collapsed-navbar" ? "moved-down" : ""}`}>
           <div className="d-flex justify-content-end face-wrap" >
