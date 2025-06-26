@@ -42,7 +42,7 @@ const Teches = () => {
             <div className="row teches-wrap">
                 {techlist.map(tech => (
                     <div key={tech.title} className="col-6 col-md-4 tech-wrap">
-                        <img className="tech-img" src={tech.img} />
+                        <img className="tech-img" src={tech.img} alt={tech.title} />
                         <p>{tech.title}</p>
                     </div>
                 ))}

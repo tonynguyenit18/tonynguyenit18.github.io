@@ -32,7 +32,7 @@ const Portfolio = () => {
 
     const toggleDes = title => () => {
         title = title.replace(" ", "")
-        if (desClassName.status && desClassName.status == "show") {
+        if (desClassName.status && desClassName.status === "show") {
             setDesClassName({ title, status: "hide" })
         } else {
             setDesClassName({ title, status: "show" })
@@ -45,10 +45,10 @@ const Portfolio = () => {
                 {projects.map(p => (
                     <div key={p.title} className="project-wrap">
                         <div className="project-image-wrap" onClick={toggleDes(p.title)}>
-                            <img src={p.bg} />
-                            <div className={`project-details d-flex flex-column align-items-center ${desClassName.title == p.title.replace(" ", "") ? desClassName.status : ""}`}>
+                            <img src={p.bg} alt={p.title} />
+                            <div className={`project-details d-flex flex-column align-items-center ${desClassName.title === p.title.replace(" ", "") ? desClassName.status : ""}`}>
                                 <p className="text-on-image mt-3 description">{p.shortDes}</p>
-                                <a href={p.url} className="btn-primary-outline_white mb-3" target="_blank">{p.btnTitle}<strong style={{ marginLeft: "10px", fontWeight: "bold" }}>></strong></a>
+                                <a href={p.url} className="btn-primary-outline_white mb-3" target="_blank" rel="noreferrer">{p.btnTitle}<strong style={{ marginLeft: "10px", fontWeight: "bold" }}>{'>'}</strong></a>
                             </div>
                         </div>
                         <p className="title-text mt-3" style={{ textAlign: "center" }}>{p.title}</p>

@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="footer">
             <div className="d-flex px-5" >
                 <div className="happy-face_footer">
-                    <img src={happyFace} style={{ width: "100%", height: "100%" }} />
-                    <img className="smile_footer" src={smile} />
+                    <img src={happyFace} style={{ width: "100%", height: "100%" }} alt="Happy face" />
+                    <img className="smile_footer" src={smile} alt="Smile" />
                 </div>
             </div>
         </div>
