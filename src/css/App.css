@@ -1,21 +1,21 @@
 /* ========================================================================
    Tony Nguyen — Portfolio
-   Bold sans, highlighter accents, dark by default
+   Bold sans, highlighter accents, light by default
    ====================================================================== */
 
 :root {
-  --paper:    #0e0e0c;
-  --paper-2:  #181815;
-  --ink:      #f4f1ea;
-  --ink-2:    #b3afa3;
-  --mute:     #6e6a5f;
-  --rule:     #26241e;
-  --card:     #181815;
+  --paper:   #fafaf7;
+  --paper-2: #ffffff;
+  --ink:     #161614;
+  --ink-2:   #4a4945;
+  --mute:    #898680;
+  --rule:    #e2dfd8;
+  --card:    #ffffff;
 
-  --accent:   oklch(64% 0.22 24);
-  --accent-ink: #0e0e0c;
-  --accent-soft: oklch(64% 0.22 24 / 0.16);
-  --highlight: oklch(64% 0.22 24 / 0.28);
+  --accent:  oklch(58% 0.22 24);
+  --accent-ink: #ffffff;
+  --accent-soft: oklch(58% 0.22 24 / 0.16);
+  --highlight: oklch(58% 0.22 24 / 0.22);
 
   --display: 'Bricolage Grotesque', 'PP Neue Machina', system-ui, sans-serif;
   --sans:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
@@ -32,17 +32,17 @@
   --step-5:  clamp(3.4rem, 2.2rem + 6vw, 6.6rem);
 }
 
-.theme-light {
-  --paper:   #fafaf7;
-  --paper-2: #ffffff;
-  --ink:     #161614;
-  --ink-2:   #4a4945;
-  --mute:    #898680;
-  --rule:    #e2dfd8;
-  --card:    #ffffff;
-  --accent:  oklch(58% 0.22 24);
-  --accent-ink: #ffffff;
-  --highlight: oklch(58% 0.22 24 / 0.22);
+.theme-dark {
+  --paper:    #0e0e0c;
+  --paper-2:  #181815;
+  --ink:      #f4f1ea;
+  --ink-2:    #b3afa3;
+  --mute:     #6e6a5f;
+  --rule:     #26241e;
+  --card:     #181815;
+  --accent:   oklch(64% 0.22 24);
+  --accent-ink: #0e0e0c;
+  --highlight: oklch(64% 0.22 24 / 0.28);
 }
 
 body {
@@ -587,70 +587,41 @@ img.face-smile {
 .reveal.d1 { transition-delay: .08s; }
 .reveal.d2 { transition-delay: .16s; }
 
-/* ---------- Tweaks (visitor-facing accent + theme) ---------- */
-.tweak-panel {
+/* ---------- Theme Switch ---------- */
+.theme-switch {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: var(--card);
-  color: var(--ink);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 14px 16px;
-  width: 240px;
-  box-shadow: 0 20px 40px -12px rgba(0,0,0,.4);
-  z-index: 1000;
-  font-family: var(--mono);
-  font-size: 12px;
-}
-.tweak-panel h4 {
-  font-size: 10px; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--mute);
-  margin: 0 0 10px; font-weight: 500;
-}
-.tweak-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 0; border-bottom: 1px solid var(--rule);
-}
-.tweak-row:last-child { border-bottom: none; }
-.tweak-swatches { display: flex; gap: 8px; }
-.tweak-swatch {
-  width: 22px; height: 22px; border-radius: 999px;
-  cursor: pointer; border: 2px solid transparent;
-  transition: transform .2s; padding: 0;
-}
-.tweak-swatch.active { border-color: var(--ink); }
-.tweak-swatch:hover { transform: scale(1.1); }
-.tweak-toggle {
-  width: 36px; height: 20px; background: var(--rule);
-  border-radius: 999px; position: relative; cursor: pointer;
-  transition: background .2s; border: none; padding: 0;
-}
-.tweak-toggle::after {
-  content: ""; position: absolute; top: 2px; left: 2px;
-  width: 16px; height: 16px; background: var(--ink);
-  border-radius: 999px; transition: transform .2s;
-}
-.tweak-toggle.on { background: var(--accent); }
-.tweak-toggle.on::after { transform: translateX(16px); background: var(--accent-ink); }
-.tweak-collapsed {
-  position: fixed;
-  bottom: 24px; right: 24px;
+  width: 44px;
+  height: 44px;
   background: var(--card);
   border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-2);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  border-radius: 50%;
   cursor: pointer;
   z-index: 1000;
-  transition: color .2s, border-color .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
-.tweak-collapsed:hover { color: var(--accent); border-color: var(--accent); }
+.theme-switch:hover {
+  transform: scale(1.08);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  color: var(--accent);
+}
+.theme-switch:active {
+  transform: scale(0.95);
+}
+.theme-switch svg {
+  transition: transform .3s;
+}
+.theme-switch:hover svg {
+  transform: rotate(15deg);
+}
 
 @media (max-width: 540px) {
-  .tweak-panel, .tweak-collapsed { bottom: 16px; right: 16px; }
+  .theme-switch { bottom: 16px; right: 16px; width: 40px; height: 40px; }
 }

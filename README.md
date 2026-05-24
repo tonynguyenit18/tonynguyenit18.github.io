@@ -33,7 +33,7 @@ Opens the development server at `http://localhost:5173`
 ### Build
 
 ```bash
-pnpm build
+pnpm run build
 ```
 
 Outputs production build to `dist/` directory.
@@ -41,7 +41,7 @@ Outputs production build to `dist/` directory.
 ### Preview
 
 ```bash
-pnpm preview
+pnpm run preview
 ```
 
 Preview the production build locally.
@@ -51,7 +51,7 @@ Preview the production build locally.
 Deploy to GitHub Pages:
 
 ```bash
-pnpm deploy
+pnpm run deploy
 ```
 
 This builds the project and publishes to the `master` branch.
