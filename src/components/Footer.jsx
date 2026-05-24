@@ -1,19 +1,14 @@
-import React from "react";
-import happyFace from '../images/happy-face.png';
-import smile from '../images/smile.png';
-import "../css/footer.css"
+import React from 'react';
 
-const Footer = () => {
-    return (
-        <div className="footer">
-            <div className="d-flex px-5" >
-                <div className="happy-face_footer">
-                    <img src={happyFace} style={{ width: "100%", height: "100%" }} alt="Happy face" />
-                    <img className="smile_footer" src={smile} alt="Smile" />
-                </div>
-            </div>
-        </div>
-    )
-}
+const Footer = () => (
+  <footer className="footer">
+    <div className="wrap">
+      <div className="footer-inner">
+        <span>© {new Date().getFullYear()} Tony Nguyen</span>
+        <span>★ thanks for scrolling</span>
+      </div>
+    </div>
+  </footer>
+);
 
-export default Footer
+export default Footer;
