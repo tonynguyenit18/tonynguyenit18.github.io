@@ -1,86 +1,55 @@
 import React, { useEffect, useState } from 'react';
 
-const ACCENTS = {
-  coral:   'oklch(66% 0.22 22)',
-  crimson: 'oklch(58% 0.24 18)',
-  tomato:  'oklch(64% 0.22 24)',
-  ember:   'oklch(58% 0.20 30)',
-  sunset:  'oklch(74% 0.18 45)',
-};
+const STORAGE_KEY = 'tony-portfolio-theme';
 
-const STORAGE_KEY = 'tony-portfolio-tweaks';
-
-const applyAccent = (key) => {
-  const val = ACCENTS[key] || ACCENTS.tomato;
-  const base = val.replace(')', '');
-  document.documentElement.style.setProperty('--accent', val);
-  document.documentElement.style.setProperty('--accent-soft', `${base} / 0.16)`);
-  document.documentElement.style.setProperty('--highlight', `${base} / 0.22)`);
-};
-
-const applyLight = (on) => {
-  document.body.classList.toggle('theme-light', !!on);
+const applyTheme = (isDark) => {
+  document.body.classList.toggle('theme-dark', isDark);
 };
 
 const Tweaks = () => {
-  const [open, setOpen] = useState(false);
-  const [accent, setAccent] = useState('tomato');
-  const [light, setLight] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
-  // Hydrate from localStorage
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const saved = JSON.parse(raw);
-        if (saved.accent && ACCENTS[saved.accent]) setAccent(saved.accent);
-        if (typeof saved.light === 'boolean') setLight(saved.light);
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved !== null) {
+        setIsDark(saved === 'dark');
       }
     } catch (_) { /* ignore */ }
   }, []);
 
-  // Persist + apply
   useEffect(() => {
-    applyAccent(accent);
-    applyLight(light);
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ accent, light })); } catch (_) { /* ignore */ }
-  }, [accent, light]);
-
-  if (!open) {
-    return (
-      <button className="tweak-collapsed" onClick={() => setOpen(true)} aria-label="Open theme tweaks">
-        ✦ theme
-      </button>
-    );
-  }
+    applyTheme(isDark);
+    try {
+      localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
+    } catch (_) { /* ignore */ }
+  }, [isDark]);
 
   return (
-    <div className="tweak-panel" role="dialog" aria-label="Theme tweaks">
-      <h4>Theme · <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', padding: 0 }}>close</button></h4>
-      <div className="tweak-row">
-        <span>Accent</span>
-        <div className="tweak-swatches">
-          {Object.entries(ACCENTS).map(([k, v]) => (
-            <button
-              key={k}
-              className={`tweak-swatch ${k === accent ? 'active' : ''}`}
-              style={{ background: v }}
-              onClick={() => setAccent(k)}
-              aria-label={`Accent ${k}`}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="tweak-row">
-        <span>Light mode</span>
-        <button
-          className={`tweak-toggle ${light ? 'on' : ''}`}
-          onClick={() => setLight((v) => !v)}
-          aria-label="Toggle light mode"
-          aria-pressed={light}
-        />
-      </div>
-    </div>
+    <button
+      className="theme-switch"
+      onClick={() => setIsDark((v) => !v)}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      {isDark ? (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      )}
+    </button>
   );
 };
 
